@@ -1,0 +1,10 @@
+-- 관리자 접속
+
+CREATE TABLESPACE RentBookDB
+DATAFILE 'C:/oraclexe/data/rentbook.dbf'
+SIZE 1M AUTOEXTEND ON NEXT 1K;
+
+CREATE USER rentbook IDENTIFIED BY rentbook
+DEFAULT TABLESPACE RentBookDB;
+
+GRANT DBA TO rentbook;
