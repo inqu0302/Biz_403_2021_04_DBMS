@@ -1,5 +1,8 @@
 -- RENTBOOK 접속
 
+DELETE FROM tbl_books;
+commit;
+
 CREATE TABLE tbl_books(
     bk_isbn	CHAR(13)		PRIMARY KEY,
     bk_title	nVARCHAR2(125)	NOT NULL,
@@ -9,7 +12,6 @@ CREATE TABLE tbl_books(
     bk_page	NUMBER	,	
     bk_price	NUMBER	
 );
-
 
 CREATE TABLE tbl_company(
     cp_code	CHAR(5)		PRIMARY KEY,
