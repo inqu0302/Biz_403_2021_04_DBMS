@@ -9,7 +9,7 @@ CREATE TABLE tbl_books(
     bk_ccode	CHAR(5)	NOT NULL,
     bk_acode	CHAR(5)	NOT NULL,
     bk_date	CHAR(10),
-    bk_page	NUMBER	,	
+    bk_pages	NUMBER	,	
     bk_price	NUMBER	
 );
 
