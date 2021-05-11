@@ -79,3 +79,4 @@ CREATE VIEW view_섭취정보 AS
         LEFT JOIN tbl_foods F
             ON m.mf_code = f.fd_code
 );
+
