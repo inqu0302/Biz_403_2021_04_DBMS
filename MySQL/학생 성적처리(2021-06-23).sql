@@ -2,6 +2,8 @@ CREATE DATABASE db_school;
 
 use db_school;
 
+DROP TABLE tbl_student;
+
 CREATE TABLE tbl_student(
 	st_num	CHAR(8)		PRIMARY KEY,
 	st_name	VARCHAR(20)	NOT NULL,
@@ -26,15 +28,17 @@ CREATE TABLE tbl_score(
 );
 
 INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
-VALUES('2021001', 'S001', 90);
+VALUES('2021003', 'S001', 100);
 
 INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
-VALUES('2021001', 'S002', 80);
+VALUES('2021003', 'S002', 95);
 
 INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
-VALUES('2021001', 'S003', 90);
+VALUES('2021003', 'S003', 90);
 
 SELECT * FROM tbl_score;
+
+DROP TABLE tbl_subject;
 
 CREATE TABLE tbl_subject(
 	sb_code	CHAR(4)		PRIMARY KEY,
@@ -52,5 +56,7 @@ INSERT INTO tbl_subject(sb_code, sb_name)
 VALUES('S004','음악');
 INSERT INTO tbl_subject(sb_code, sb_name)
 VALUES('S005','과학');
+
+delete from tbl_subject WHERE sb_code = "과목코드";
 
 SELECT * FROM  tbl_subject;
