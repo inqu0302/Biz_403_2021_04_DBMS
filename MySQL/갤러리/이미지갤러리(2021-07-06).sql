@@ -54,3 +54,7 @@ SELECT G.g_seq AS g_seq , G.g_writer AS g_writer, G.g_date AS g_date, G.g_time A
 SELECT * FROM view_갤러리;
     
 DESC view_갤러리;
+
+SHOW TABLES;
+
+DESC tbl_member;
