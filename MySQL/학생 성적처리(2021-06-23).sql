@@ -19,14 +19,34 @@ VALUES('2021001', '홍길동', '컴퓨터공학', '3', '010-1111-2222');
 commit;
 
 drop table tbl_score;
+/*
+TABLE에 INSERT INTO ON DUPLICATE KEY UPDATE를 실행하기 위해서는
+PK 설정을 변경해야 한다.
 
+tbl_score는 두개의 칼럼을 기준으로 UPDATE,DELETE 를 수행하는 문제가 발생한다
+가장 좋은 설계는 UPDATE, DELETE를 수행할때 한개의 칼럼으로 구성된 PK를 기준으로 수행하는 것이다.
+*/
+CREATE TABLE tbl_score(
+	-- sc_seq	BIGINT	AUTO_INCREMENT PRIMARY KEY,
+	sc_stnum	CHAR(8)	NOT NULL,
+	sc_sbcode	CHAR(4)	NOT NULL,
+	sc_score	INT	NOT NULL	,
+    Primary Key(sc_stnum, sc_sbcode)
+);
+
+/*
+PK는 그대로 사용하고 두개의 칼럼을 묶어 UNIQUE로 설정
+두개의 칼럼의 값이 동시에 같은경우는 추가하지 말라는 제약조건 설정
+*/
 CREATE TABLE tbl_score(
 	sc_seq	BIGINT	AUTO_INCREMENT PRIMARY KEY,
 	sc_stnum	CHAR(8)	NOT NULL,
 	sc_sbcode	CHAR(4)	NOT NULL,
-	sc_score	INT	NOT NULL	
+	sc_score	INT	NOT NULL	,
+    UNIQUE(sc_stnum, sc_sbcode)
 );
 
+-- 한 학생의 3과목의 점수를 개별적으로 INSERT
 INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
 VALUES('2021003', 'S001', 100);
 
@@ -35,6 +55,17 @@ VALUES('2021003', 'S002', 95);
 
 INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
 VALUES('2021003', 'S003', 90);
+
+-- 한번에 INSERT 명령문으로 다수의 데이터를 INSERT
+-- BULK INSERT
+INSERT INTO tbl_score ( sc_stnum, sc_sbcode, sc_score )
+VALUES
+('2021002', 'S001', 90),
+('2021002', 'S002', 90),
+('2021002', 'S003', 90),
+('2021002', 'S004', 90),
+('2021002', 'S005', 90);
+
 
 SELECT * FROM tbl_score;
 
